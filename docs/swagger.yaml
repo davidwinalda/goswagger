@@ -1,0 +1,129 @@
+basePath: /api/v1
+definitions:
+  models.Student:
+    properties:
+      age:
+        type: integer
+      batch:
+        type: string
+      fullname:
+        type: string
+      id:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: davidwinalda@gmail.com
+    name: API Support
+  description: This is a basic API Students using Gin and Gorm.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Students API
+  version: "1.0"
+paths:
+  /student:
+    post:
+      consumes:
+      - application/json
+      description: Add by JSON Student
+      parameters:
+      - description: Add Student
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/models.Student'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+      summary: Create student data
+      tags:
+      - student
+  /student/{id}:
+    delete:
+      consumes:
+      - application/json
+      operationId: get-string-by-int
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.Student'
+      summary: Delete student by Id
+      tags:
+      - student
+    get:
+      consumes:
+      - application/json
+      operationId: get-string-by-int
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+      summary: Show student by Id
+      tags:
+      - student
+    put:
+      consumes:
+      - application/json
+      description: Update by JSON Student
+      parameters:
+      - description: Student Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Student
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/models.Student'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+      summary: Update student data by Id
+      tags:
+      - student
+  /students:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+      summary: Show a list of students
+      tags:
+      - student
+swagger: "2.0"
